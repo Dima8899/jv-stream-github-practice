@@ -1,8 +1,7 @@
 package practice;
 
-import model.*;
-
-import java.util.function.*;
+import java.util.function.Predicate;
+import model.Candidate;
 
 public class CandidateValidator implements Predicate<Candidate> {
     @Override
@@ -12,7 +11,7 @@ public class CandidateValidator implements Predicate<Candidate> {
         int b = Integer.parseInt(periods[1]);
         int yearsUkr = b - a;
 
-        return candidate.getAge() > 35 && candidate.isAllowedToVote()
-        && yearsUkr >= 10 && "Ukraine".equals(candidate.getNationality());
+        return candidate.getAge() >= 35 && candidate.isAllowedToVote()
+                && yearsUkr >= 10 && "Ukrainian".equals(candidate.getNationality());
     }
 }
