@@ -21,8 +21,7 @@ public class StreamPractice {
                 .map(String::trim)
                 .mapToInt(Integer::parseInt).filter(n -> n % 2 == 0).min().orElseThrow(
                         () -> new RuntimeException(
-                                "Can't get min value from list: " + numbers
-                                        + " >"));
+                                "Can't get min value from list: " + numbers));
     }
 
     /**
