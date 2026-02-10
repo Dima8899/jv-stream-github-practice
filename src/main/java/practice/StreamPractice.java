@@ -18,9 +18,10 @@ public class StreamPractice {
      */
     public int findMinEvenNumber(List<String> numbers) {
         return numbers.stream().flatMap(s -> Arrays.stream(s.split(",")))
+                .map(String::trim)
                 .mapToInt(Integer::parseInt).filter(n -> n % 2 == 0).min().orElseThrow(
                         () -> new RuntimeException(
-                                "Can't get min value from list: < Here is our input " + numbers
+                                "Can't get min value from list: " + numbers
                                         + " >"));
     }
 
@@ -30,7 +31,6 @@ public class StreamPractice {
      * But before that subtract 1 from each element on an odd position (having the odd index).
      */
     public Double getOddNumsAverage(List<Integer> numbers) {
-        int count;
         return IntStream.range(0, numbers.size()).map(i -> {
             int value = numbers.get(i);
             return (i % 2 != 0) ? value - 1 : value;
